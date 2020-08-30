@@ -34,9 +34,9 @@ services:
       ELASTICSEARCH_HOSTS: http://es01:9200
     networks:
       - elastic
-  
-  py01:
-    build: .
+
+  python:
+    
     container_name: py01
     depends_on:
       - es01
@@ -44,6 +44,7 @@ services:
     networks:
       - elastic
 
+    
 networks:
   elastic:
     driver: bridge

@@ -6,7 +6,11 @@ import time
 time.sleep(12)
 
 try:
-	es = Elasticsearch(host='es01', port=9200, timeout=30, max_retries=10, retry_on_timeout=True)
+	es = Elasticsearch(host="es01", port=9200, timeout=30, max_retries=10, retry_on_timeout=True)
+	if not es.ping():
+		print("error")
+	else:
+		print("connected")
 
 	season = '2019'
 	result = requests.get("http://www.howstat.com/cricket/Statistics/IPL/SeriesMatches.asp?s="+season)
@@ -95,7 +99,7 @@ try:
 			}
 			print(doc)
 
-			res = es.index(index="matches", id=1, body=doc, timeout=60)
+			res = es.index(index="matches", body=doc)
 			print(res['result'])
 
 			print()
