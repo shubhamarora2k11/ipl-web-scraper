@@ -2,9 +2,11 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
 from elasticsearch import Elasticsearch
+import time
+time.sleep(12)
 
-try: 
-	es = Elasticsearch()
+try:
+	es = Elasticsearch(hosts=[{"host":"es01"}])
 
 	season = '2019'
 	result = requests.get("http://www.howstat.com/cricket/Statistics/IPL/SeriesMatches.asp?s="+season)
