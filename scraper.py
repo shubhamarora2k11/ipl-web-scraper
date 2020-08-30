@@ -95,7 +95,7 @@ try:
 			}
 			print(doc)
 
-			res = es.index(index="matches", id=1, body=doc)
+			res = es.index(index="matches", id=1, body=doc, timeout=60)
 			print(res['result'])
 
 			print()
