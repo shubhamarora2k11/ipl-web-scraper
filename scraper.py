@@ -6,7 +6,7 @@ import time
 time.sleep(12)
 
 try:
-	es = Elasticsearch(hosts=[{"host":"es01"}])
+	es = Elasticsearch(host='es01', port=9200, timeout=30, max_retries=10, retry_on_timeout=True)
 
 	season = '2019'
 	result = requests.get("http://www.howstat.com/cricket/Statistics/IPL/SeriesMatches.asp?s="+season)
